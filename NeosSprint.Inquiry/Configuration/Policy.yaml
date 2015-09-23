@@ -1,0 +1,18 @@
+privilegeTargets:
+  TYPO3\Flow\Security\Authorization\Privilege\Method\MethodPrivilege:
+    'NeosSprint.Inquiry:InquiryControllerActions':
+      matcher: 'method(NeosSprint\Inquiry\Controller\InquiryController->(index)Action())'
+    'NeosSprint.Inquiry:BackendInquiryControllerActions':
+      matcher: 'method(NeosSprint\Inquiry\Controller\Module\BackendInquiryController->(index|detail|update|delete)Action())'
+
+roles:
+  'TYPO3.Flow:Everybody':
+    privileges:
+      -
+        privilegeTarget: 'NeosSprint.Inquiry:InquiryControllerActions'
+        permission: GRANT
+  'TYPO3.Neos:Editor':
+    privileges:
+      -
+        privilegeTarget: 'NeosSprint.Inquiry:BackendInquiryControllerActions'
+        permission: GRANT

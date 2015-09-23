@@ -1,0 +1,52 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+
+    <div class="neos-row-fluid">
+        <table class="neos-table">
+            <thead>
+            <tr>
+                <th>{neos:backend.translate(id: 'inquiries.name', value: 'Name')}</th>
+                <th>{neos:backend.translate(id: 'inquiries.email', value: 'E-Mail')}</th>
+            </tr>
+            </thead>
+            <f:for each="{inquiries}" key="index" as="inquiry">
+                <tr>
+                    <td>{inquiry.name}</td>
+                    <td>{inquiry.email}</td>
+
+                    <td class="neos-action">
+                        <div class="neos-pull-right">
+                            <f:link.action action="detail" arguments="{inquiry: inquiry}" class="neos-button neos-button-primary" title="{neos:backend.translate(id: 'clickToView', value: 'Click to view')}">
+                                <i class="icon-info-sign icon-white"></i>
+                            </f:link.action>
+                            <button class="neos-button neos-button-danger" title="{neos:backend.translate(id: 'clickToDelete', value: 'Click to delete')}" data-toggle="modal" href="#inquiry-{index}">
+                                <i class="icon-trash icon-white"></i>
+                            </button>
+                            <div class="neos-hide" id="inquiry-{index}">
+                                <div class="neos-modal">
+                                    <div class="neos-modal-header">
+                                        <button type="button" class="neos-close neos-button" data-dismiss="modal"></button>
+                                        <div class="neos-header">{neos:backend.translate(id: 'inquiry.deleteModalHeader', value: 'Do you really want to delete the inquiry "{0}"?', arguments: {0: "{user.name}"})}</div>
+                                        <div>
+                                            <div class="neos-subheader">
+                                                <p>{neos:backend.translate(id: 'inquiry.deleteModalBody', value: 'This will delete the inquiry. This operation cannot be undone.')}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="neos-modal-footer">
+                                        <a href="#" class="neos-button" data-dismiss="modal">{neos:backend.translate(id: 'cancel', value: 'Cancel')}</a>
+                                        <f:form action="delete" arguments="{inquiry: inquiry}" class="neos-inline">
+                                            <button type="submit" class="neos-button neos-button-danger" title="Delete inquiry">
+                                                {neos:backend.translate(id: 'inquiry.deleteModalConfirm', value: 'Yes, delete inquiry')}
+                                            </button>
+                                        </f:form>
+                                    </div>
+                                </div>
+                                <div class="neos-modal-backdrop neos-in"></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </f:for>
+        </table>
+    </div>
+

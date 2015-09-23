@@ -1,0 +1,21 @@
+TYPO3:
+  Neos:
+    typoScript:
+      autoInclude:
+        'NeosSprint.Inquiry': TRUE
+    modules:
+      management:
+        submodules:
+          inquiry:
+            label: 'Inquiries'
+            description: 'Anfragen'
+            controller: 'NeosSprint\Inquiry\Controller\Module\BackendInquiryController'
+            hideInMenu: FALSE
+            privilegeTarget: 'NeosSprint.Inquiry:BackendInquiryControllerActions'
+
+TYPO3:
+  Form:
+    presets:
+      form:
+        title: 'Edit Form'
+        parentPreset: 'default'

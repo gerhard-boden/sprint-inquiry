@@ -1,0 +1,12 @@
+prototype(NeosSprint.Inquiry:Inquiry) < prototype(TYPO3.Neos:Plugin) {
+    package = 'NeosSprint.Inquiry'
+    controller = 'Inquiry'
+    action = 'index'
+    @cache {
+        mode = 'uncached'
+        context {
+            1 = 'node'
+            2 = 'documentNode'
+        }
+    }
+}

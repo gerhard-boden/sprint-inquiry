@@ -1,0 +1,8 @@
+##
+# A simple plugin that allows "Frontend users" to edit their profile
+#
+'NeosSprint.Inquiry:Inquiry':
+  superTypes: ['TYPO3.Neos:Plugin']
+  ui:
+    label: 'Anfrage Formular'
+    icon: 'icon-user'
